@@ -104,6 +104,11 @@ body{
 
 .rotate{
     animation:spin 8s linear infinite;
+    animation-play-state:running;
+}
+
+.paused{
+    animation-play-state:paused;
 }
 
 @keyframes spin{

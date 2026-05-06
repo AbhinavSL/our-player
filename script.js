@@ -86,6 +86,7 @@ playBtn.addEventListener("click", () => {
         playBtn.innerHTML = "❚❚";
 
         cover.classList.add("rotate");
+        cover.classList.remove("paused");
 
         playing = true;
 
@@ -95,7 +96,7 @@ playBtn.addEventListener("click", () => {
 
         playBtn.innerHTML = "▶";
 
-        cover.classList.remove("rotate");
+        cover.classList.add("paused");
 
         playing = false;
     }
@@ -241,7 +242,7 @@ voiceBtn.addEventListener("click", () => {
 
         playing = false;
 
-        cover.classList.remove("rotate");
+        cover.classList.add("paused");
 
         voice.play();
 
@@ -294,20 +295,14 @@ song.addEventListener("ended", ()=>{
     }
 
     loadSong(currentSong);
+    cover.classList.add("rotate");
+    cover.classList.add("paused");
 
     song.play();
 
     playBtn.innerHTML = "❚❚";
 
     playing = true;
-
-    cover.classList.remove("rotate");
-
-    setTimeout(()=>{
-
-        cover.classList.add("rotate");
-
-    },10);
 
 });
 
@@ -320,18 +315,12 @@ prevBtn.addEventListener("click", ()=>{
     }
 
     loadSong(currentSong);
+    cover.classList.add("rotate");
+    cover.classList.add("paused");
 
     song.play();
 
     playBtn.innerHTML = "❚❚";
 
     playing = true;
-
-    cover.classList.remove("rotate");
-
-    setTimeout(()=>{
-
-        cover.classList.add("rotate");
-
-    },10);
 });
