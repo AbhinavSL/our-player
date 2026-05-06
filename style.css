@@ -11,6 +11,7 @@ html, body{
 
 body{
     background:black;
+    position:relative;
     color:white;
     overflow-x:hidden;
     overflow-y:auto;
@@ -30,18 +31,37 @@ body{
 .background-image{
     position:fixed;
     inset:0;
-    background:url('images/cover.jpg') center/cover;
+    background:url('images/1.jpg') center/cover;
+    background-attachment:fixed;
     filter:blur(40px);
     transform:scale(1.2);
     opacity:.18;
     z-index:-2;
+    animation:slowMove 20s ease-in-out infinite alternate;
+}
+
+@keyframes slowMove{
+
+    0%{
+        transform:scale(1.2) translateY(0px);
+    }
+
+    100%{
+        transform:scale(1.3) translateY(-30px);
+    }
+
 }
 
 .player{
     max-width:420px;
     margin:auto;
     min-height:100vh;
-    padding:25px;
+
+    padding:
+    max(25px, env(safe-area-inset-top))
+    25px
+    max(25px, env(safe-area-inset-bottom));
+
     display:flex;
     flex-direction:column;
 }
@@ -54,17 +74,25 @@ body{
 }
 
 .cover-container{
-    display:flex;
-    justify-content:center;
+    width:280px;
+    height:280px;
+    margin:auto;
     position:relative;
     overflow:hidden;
     border-radius:50%;
+    animation:float 4s ease-in-out infinite;
 }
 
 .cover{
     width:100%;
     border-radius:30px;
+    object-fit:cover;
     box-shadow:0 20px 40px rgba(0,0,0,.6);
+    transition:transform .5s linear;
+    transform-origin:center;
+}
+
+.cover-container{
     animation:float 4s ease-in-out infinite;
 }
 
@@ -79,8 +107,15 @@ body{
 }
 
 @keyframes spin{
-    from{transform:rotate(0deg);}
-    to{transform:rotate(360deg);}
+
+    from{
+        transform:rotate(0deg);
+    }
+
+    to{
+        transform:rotate(360deg);
+    }
+
 }
 
 .song-details{
@@ -144,6 +179,7 @@ body{
     align-items:center;
     gap:30px;
     margin-top:40px;
+    backdrop-filter:blur(10px);
 }
 
 .controls button{
@@ -198,4 +234,21 @@ body{
     line-height:1.8;
     text-align:center;
     font-size:15px;
+}
+
+.song-details h1,
+.song-details p,
+.cover,
+.background-image{
+    transition:.5s;
+}
+
+.controls button,
+.voice-card button{
+    transition:.2s ease;
+}
+
+.controls button:active,
+.voice-card button:active{
+    transform:scale(.92);
 }
