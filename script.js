@@ -15,8 +15,8 @@ const songs = [
 },
 
 {
-    name:"Kannaadi Vaathil",
-    artist:"Yours Sree ❤️",
+    name:"Kaattuchembakam",
+    artist:"Jakes Bejoy",
     file:"songs/song3.mp3",
     cover:"images/3.jpg"
 },
